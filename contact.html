@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Clinton Oh | Entrepreneur, Consultant, Investor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #2d3748;
+            line-height: 1.6;
+            padding-top: 70px;
+            background: #ffffff;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 70px;
+            background: #1a365d;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 20px rgba(26, 54, 93, 0.1);
+        }
+
+        .navbar .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .navbar .logo:hover {
+            opacity: 0.9;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ff6b35;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #ff6b35;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 80px 0 60px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-main {
+            padding: 80px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(26, 54, 93, 0.1);
+            border: 1px solid rgba(26, 54, 93, 0.1);
+        }
+
+        .contact-form h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2c5282;
+            box-shadow: 0 0 0 3px rgba(44, 82, 130, 0.1);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #ff6b35 0%, #ff5722 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .contact-info {
+            padding: 20px 0;
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(26, 54, 93, 0.08);
+            margin-bottom: 20px;
+            border-left: 4px solid #ff6b35;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateX(5px);
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-card p {
+            color: #2d3748;
+            font-size: 1rem;
+        }
+
+        .info-card a {
+            color: #2c5282;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .info-card a:hover {
+            color: #ff6b35;
+        }
+
+        .business-hours {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .hours-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hours-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #ff6b35;
+        }
+
+        .hours-card p {
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-section {
+            padding: 80px 0;
+            background: #f7fafc;
+        }
+
+        .faq-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 3rem;
+        }
+
+        .faq-grid {
+            display: grid;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(26, 54, 93, 0.08);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 25px;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+        }
+
+        .faq-answer {
+            padding: 25px;
+            color: #2d3748;
+            line-height: 1.7;
+        }
+
+        .footer {
+            background: #1a365d;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 1rem;
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a365d;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .contact-form {
+                padding: 30px;
+            }
+
+            .hours-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Clinton Oh</a>
+        <button class="mobile-nav-toggle">☰</button>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Clinton</a></li>
+            <li><a href="coaching.html">Coaching Programs</a></li>
+            <li><a href="franchising.html">Franchising Solutions</a></li>
+            <li><a href="mymanager.html">MyManager CRM</a></li>
+            <li><a href="philanthropy.html">Operation Child Rescue</a></li>
+            <li><a href="blog.html">Blog & Media</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1>Get In Touch</h1>
+            <p>Ready to elevate your business to the next level? Let's discuss how we can help you achieve your entrepreneurial goals and transform your vision into reality.</p>
+        </div>
+    </section>
+
+    <section class="contact-main">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form">
+                    <h2>Send a Message</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Area of Interest *</label>
+                            <select id="interest" name="interest" required>
+                                <option value="">Select an option</option>
+                                <option value="coaching">Personal Coaching Programs</option>
+                                <option value="franchising">Franchising Solutions</option>
+                                <option value="mymanager">MyManager CRM</option>
+                                <option value="consulting">Business Consulting</option>
+                                <option value="speaking">Speaking Engagements</option>
+                                <option value="philanthropy">Operation Child Rescue</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" placeholder="Tell us about your goals and how we can help you achieve them..." required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    
+                    <div class="info-card">
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@clintonoh.com">info@clintonoh.com</a></p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Phone</h3>
+                        <p><a href="tel:+1-555-123-4567">(555) 123-4567</a></p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Business Address</h3>
+                        <p>Next Level Media<br>
+                        123 Business Center Drive<br>
+                        Suite 200<br>
+                        Los Angeles, CA 90210</p>
+                    </div>
+
+                    <div class="info-card">
+                        <h3>Response Time</h3>
+                        <p>We typically respond to all inquiries within 24-48 hours during business days. For urgent matters, please call directly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="business-hours">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 2.5rem; font-weight: 700; margin-bottom: 3rem;">Business Hours & Availability</h2>
+            <div class="hours-grid">
+                <div class="hours-card">
+                    <h3>General Inquiries</h3>
+                    <p><strong>Monday - Friday:</strong> 9:00 AM - 6:00 PM PST</p>
+                    <p><strong>Saturday:</strong> 10:00 AM - 2:00 PM PST</p>
+                    <p><strong>Sunday:</strong> Closed</p>
+                </div>
+                <div class="hours-card">
+                    <h3>Coaching Sessions</h3>
+                    <p><strong>Monday - Friday:</strong> 8:00 AM - 7:00 PM PST</p>
+                    <p><strong>Weekend:</strong> By appointment only</p>
+                    <p>Sessions available via video call worldwide</p>
+                </div>
+                <div class="hours-card">
+                    <h3>Emergency Support</h3>
+                    <p><strong>MyManager CRM:</strong> 24/7 technical support</p>
+                    <p><strong>Franchise Clients:</strong> Priority phone line available</p>
+                    <p><strong>Operation Child Rescue:</strong> 24/7 crisis line</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">How quickly can I expect a response to my inquiry?</div>
+                    <div class="faq-answer">We pride ourselves on quick response times. Most inquiries receive a response within 24-48 hours during business days. For coaching program inquiries and franchise opportunities, we typically schedule a discovery call within 3-5 business days.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you offer virtual consultations?</div>
+                    <div class="faq-answer">Absolutely! Clinton conducts coaching sessions and business consultations via secure video conferencing worldwide. This allows us to work with clients regardless of geographic location while maintaining the personal connection that drives results.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">What's the best way to get started with your services?</div>
+                    <div class="faq-answer">The best first step is to fill out our contact form with details about your goals and interests. This helps us understand your needs and schedule the most appropriate type of initial consultation, whether it's for coaching, franchising, or business consulting.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Do you work with businesses of all sizes?</div>
+                    <div class="faq-answer">Yes! Through Clinton's various programs and services, we work with everyone from individual entrepreneurs just starting out to established corporations looking to franchise or optimize their operations. Our MyManager CRM is specifically designed to scale with businesses of all sizes.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">How can I support Operation Child Rescue?</div>
+                    <div class="faq-answer">We welcome support for our humanitarian work through Operation Child Rescue. You can learn more about our mission, volunteer opportunities, and donation options by selecting "Operation Child Rescue" in your inquiry or visiting our dedicated philanthropy page.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Clinton Oh. All rights reserved.</p>
+            <p>Entrepreneur, Consultant, Investor - Elevate Your Success</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelector('.mobile-nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
