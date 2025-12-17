@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coaching Programs - Clinton Oh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #2d3748;
+            line-height: 1.6;
+            padding-top: 70px;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            box-shadow: 0 4px 20px rgba(26, 54, 93, 0.15);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #ffffff;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background-color: #ff6b35;
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background-color: #ffffff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            padding: 6rem 0 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/arrows-271w.png') no-repeat center center;
+            background-size: cover;
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: #ff6b35;
+            font-weight: 600;
+            margin-bottom: 3rem;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a365d;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2d3748;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Programs Grid */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(26, 54, 93, 0.1);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-image {
+            height: 200px;
+            background: linear-gradient(135deg, #2c5282 0%, #1a365d 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        .program-content {
+            padding: 2rem;
+        }
+
+        .program-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .program-description {
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .program-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .program-features li {
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .program-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: 700;
+        }
+
+        .program-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1a365d;
+        }
+
+        .testimonial-role {
+            color: #ff6b35;
+            font-size: 0.9rem;
+        }
+
+        /* Process Section */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .step-description {
+            color: #2d3748;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/nextlevelwhite-192w.png') no-repeat center center;
+            background-size: contain;
+            opacity: 0.05;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-white {
+            background: white;
+            color: #1a365d;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1a365d;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .navbar {
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .program-card {
+                margin: 0 1rem;
+            }
+
+            .cta h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">Clinton Oh</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Clinton</a></li>
+            <li><a href="coaching.html" class="active">Coaching Programs</a></li>
+            <li><a href="franchising.html">Franchising Solutions</a></li>
+            <li><a href="mymanager.html">MyManager CRM</a></li>
+            <li><a href="philanthropy.html">Operation Child Rescue</a></li>
+            <li><a href="blog.html">Blog & Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transform Your Success</h1>
+            <p class="hero-tagline">Entrepreneur, Consultant, Investor - Elevate Your Success</p>
+            <p>Unlock your potential with Clinton Oh's personalized coaching programs designed to accelerate your business growth and personal development through proven strategies and cutting-edge technology.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Programs Overview -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Coaching Programs</h2>
+                <p class="section-subtitle">Clinton's personal coaching program, Be Aligned, blends vast entrepreneurial experience with custom technology for unparalleled results in personal and business success. Choose the program that best fits your goals and current stage of growth.</p>
+                
+                <div class="programs-grid">
+                    <div class="program-card">
+                        <div class="program-image">BA</div>
+                        <div class="program-content">
+                            <h3 class="program-title">Be Aligned - Executive</h3>
+                            <p class="program-description">Our premier one-on-one coaching program for established business owners and executives ready to scale their operations and maximize their impact.</p>
+                            <ul class="program-features">
+                                <li>Weekly 1-on-1 coaching sessions</li>
+                                <li>Custom business strategy development</li>
+                                <li>Access to Clinton's extensive network</li>
+                                <li>Technology optimization and automation</li>
+                                <li>Personal and professional alignment</li>
+                                <li>24/7 priority support access</li>
+                            </ul>
+                            <div class="program-price">$5,000/month</div>
+                            <a href="contact.html" class="btn">Apply Now</a>
+                        </div>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="program-image">BG</div>
+                        <div class="program-content">
+                            <h3 class="program-title">Business Growth Accelerator</h3>
+                            <p class="program-description">Perfect for small to medium business owners looking to break through growth barriers and establish scalable systems.</p>
+                            <ul class="program-features">
+                                <li>Bi-weekly group coaching sessions</li>
+                                <li>Growth strategy workshops</li>
+                                <li>CRM and marketing automation setup</li>
+                                <li>Peer networking opportunities</li>
+                                <li>Resource library access</li>
+                                <li>Email and chat support</li>
+                            </ul>
+                            <div class="program-price">$2,500/month</div>
+                            <a href="contact.html" class="btn">Learn More</a>
+                        </div>
+                    </div>
+
+                    <div class="program-card">
+                        <div class="program-image">ES</div>
+                        <div class="program-content">
+                            <h3 class="program-title">Entrepreneur Starter</h3>
+                            <p class="program-description">Ideal for new entrepreneurs and startup founders who need guidance on building their business from the ground up.</p>
+                            <ul class="program-features">
+                                <li>Monthly group coaching calls</li>
+                                <li>Business foundation modules</li>
+                                <li>Basic CRM setup assistance</li>
+                                <li>Startup resources and templates</li>
+                                <li>Community forum access</li>
+                                <li>Email support</li>
+                            </ul>
+                            <div class="program-price">$997/month</div>
+                            <a href="contact.html" class="btn">Get Started</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Process Section -->
+        <section class="section">
+            <div class="container">
+                <h2 class="section-title">Our Proven Process</h2>
+                <p class="section-subtitle">Clinton's systematic approach combines decades of entrepreneurial experience with modern technology to deliver measurable results for every client.</p>
+                
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Assessment & Alignment</h3>
+                        <p class="step-description">We begin with a comprehensive assessment of your current business situation, goals, and personal vision to create perfect alignment.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Strategy Development</h3>
+                        <p class="step-description">Clinton works with you to develop a customized strategy that leverages his extensive experience and proven methodologies.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Implementation & Optimization</h3>
+                        <p class="step-description">We implement cutting-edge technology solutions and optimize your operations for maximum efficiency and growth.</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Scale & Sustain</h3>
+                        <p class="step-description">With systems in place, we focus on scaling your success and building sustainable growth for long-term prosperity.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials -->
+        <section class="section testimonials">
+            <div class="container">
+                <h2 class="section-title">Client Success Stories</h2>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Clinton's coaching transformed not just my business, but my entire approach to entrepreneurship. His blend of strategic thinking and technological innovation is unmatched."</p>
+                        <div class="testimonial-author">Sarah Mitchell</div>
+                        <div class="testimonial-role">CEO, TechStart Solutions</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"Working with Clinton through the Be Aligned program helped me scale my business 300% in just 18 months. His network and insights are invaluable."</p>
+                        <div class="testimonial-author">Marcus Rodriguez</div>
+                        <div class="testimonial-role">Founder, Rodriguez Enterprises</div>
+                    </div>
+                    <div class="testimonial-card">
+                        <p class="testimonial-text">"The combination of personal coaching and technology optimization gave me the tools I needed to finally break through my revenue ceiling."</p>
+                        <div class="testimonial-author">Jennifer Lee</div>
+                        <div class="testimonial-role">Owner, Digital Marketing Agency</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Elevate Your Success?</h2>
+                    <p>Join Clinton Oh's exclusive coaching programs and transform your business with proven strategies, cutting-edge technology, and unparalleled support.</p>
+                    <a href="contact.html" class="btn-white">Schedule Your Strategy Call</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Clinton Oh. All rights reserved. Entrepreneur, Consultant, Investor - Elevate Your Success</p>
+        </div>
+    </footer>
+</body>
+</html>
